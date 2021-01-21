@@ -150,7 +150,7 @@ void Graph::printList(Node *edges)
 	}
 	
 	// KEEP ITERATING
-    printList(edges->next);
+    	printList(edges->next);
 }
 
 void Graph::dijkstra(char start)
@@ -186,19 +186,19 @@ void Graph::setParents(Node *edges, Node *parent)
 		return setParents(adjacencyList[vertex]->next, adjacencyList[vertex]);	
 	}
     
-    // GET NEIGHBOR
-    int index = CONVERT_CHAR_TO_INDEX(edges->vertex);
+    	// GET NEIGHBOR
+    	int index = CONVERT_CHAR_TO_INDEX(edges->vertex);
     
-    parent->isVisited = true;
+    	parent->isVisited = true;
     
-    // MODIFY NODE PARENT AND COST OF OUR NEIGHBORS NOT VISITED BY THE LOWER PATH
-    if (edges->cost + parent->cost < adjacencyList[index]->cost && !adjacencyList[index]->isVisited) {
-    	adjacencyList[index]->cost = edges->cost + parent->cost;
-    	adjacencyList[index]->parent = parent->vertex;	
+    	// MODIFY NODE PARENT AND COST OF OUR NEIGHBORS NOT VISITED BY THE LOWER PATH
+    	if (edges->cost + parent->cost < adjacencyList[index]->cost && !adjacencyList[index]->isVisited) {
+    		adjacencyList[index]->cost = edges->cost + parent->cost;
+    		adjacencyList[index]->parent = parent->vertex;	
 	}
 	
 	// CONTINUE WITH THE NEXT EDGE
-    setParents(edges->next, parent);
+    	setParents(edges->next, parent);
 }
 
 void Graph::getShortestPath(char start, char end, int cost)
